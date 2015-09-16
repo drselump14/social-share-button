@@ -17,6 +17,10 @@ window.SocialShareButton =
     desc = encodeURIComponent($parent.data("desc") || ' ')
     popup = encodeURIComponent($parent.data("popup") || 'false')
 
+    options = ''
+    $.each($(el).data(), (k,v) ->
+      options += "&#{k}=#{v}" )
+
     if url.length == 0
       url = encodeURIComponent(location.href)
     switch site
@@ -27,7 +31,7 @@ window.SocialShareButton =
       when "twitter"
         via_str = ''
         via_str = "&via=#{via}" if via.length > 0
-        SocialShareButton.openUrl("https://twitter.com/intent/tweet?url=#{url}&text=#{title}#{via_str}",popup)
+        SocialShareButton.openUrl("https://twitter.com/intent/tweet?url=#{url}&text=#{title}#{via_str}#{options}",popup)
       when "douban"
         SocialShareButton.openUrl("http://shuo.douban.com/!service/share?href=#{url}&name=#{title}&image=#{img}&sel=#{desc}",popup)
       when "facebook"
