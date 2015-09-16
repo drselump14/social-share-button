@@ -5,13 +5,12 @@ module SocialShareButton
       yield self.config ||= Config.new
     end
   end
-  
+
   class Config
-    # enable social sites to share, 
+    # enable social sites to share,
     # * default : twitter facebook weibo douban
     # * site support: twitter facebook weibo douban
-    attr_accessor :allow_sites
-    
+    attr_accessor :allow_sites, :default_metas
     def initialize
     end
   end
